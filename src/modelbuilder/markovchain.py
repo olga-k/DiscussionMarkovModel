@@ -13,9 +13,9 @@ class MarkovChain(object):
         
     def state_probs_str(self):
         """
-        Funkcja do wypisywania prawdopodobienstw stanow
-        Kolejne stany wypisywanie sa w kolumnie, w formacie:
-        key \t value    
+        This method prints out the model states.
+        The subsequent states are print out as rows, in the following form:
+        key \t value     
         """
         result = ''
         for key in self.state_probabilities.keys():
@@ -24,8 +24,8 @@ class MarkovChain(object):
         
     def matrix_str(self):
         """
-        Funkcja do wypisywania zawartosci macierzy Markova
-        Kolejne celki wypisywane sa w kolumnie, w formacie:
+        This method prints out the Markov matrix
+        using the following convention: 
         from_state->to_state    value
         """
         result = '' 

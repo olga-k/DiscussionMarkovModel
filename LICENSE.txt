@@ -1,0 +1,4 @@
+This software is licesed to the public under GNU license.
+http://www.gnu.org/licenses/gpl.html
+
+No warranty.

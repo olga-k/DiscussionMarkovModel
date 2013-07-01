@@ -3,7 +3,8 @@ from pandas import ExcelFile
 from markovchain import MarkovChain
 from orderstatemapper import OrderStateMapper
 from equalordermarkovmatrixcomparator import EqualOrderMarkovMatrixComparator
-
+from scipy.stats import chisquare
+from array import array
 
 xlsx = ExcelFile('dane.xls')
 data = xlsx.parse('strona', parse_cols=[1, 7], index_col=None, na_values=['NA'])
@@ -24,10 +25,16 @@ mapper = OrderStateMapper(model_1, 1, model_2, 2)
 
 model_1_adjusted_to_2=mapper.get_lower_order_matrix_adjusted_to_the_higher_one()
 
-comparison_model= EqualOrderMarkovMatrixComparator(model_2,model_1_adjusted_to_2)
+comparison_model= EqualOrderMarkovMatrixComparator(model_1_adjusted_to_2,model_2)
 comaprison = comparison_model.get_probabilities_for_transitions()
+expected,observed=comparison_model.get_probablilities_expected_and_observed()
 
-print(comaprison)
+print(expected)
+print(observed)
+
+chi = chisquare(observed, expected)
+
+print(chi)
 
 
 
